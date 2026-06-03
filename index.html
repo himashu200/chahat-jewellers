@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Chahat Jewellers - Exquisite Gold, Diamond & Silver Jewellery</title>
+    <!-- Google Fonts for elegant typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fef9f0;
+            color: #2c1810;
+            line-height: 1.5;
+        }
+
+        h1, h2, h3, .logo, .nav-links a, .hero-title {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #1f130b 0%, #3a2318 100%);
+            color: #f9e0b0;
+            padding: 0.8rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        .logo p {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #f3c26b;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #f9e0b0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            font-size: 1rem;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #ffd966;
+            border-bottom: 2px solid #ffd966;
+        }
+
+        /* Mobile responsive menu */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #f9e0b0;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #f3e1c0;
+        }
+        .hero {
+            background: url('https://placehold.co/1920x600/f7e9d7/8b5a2b?text=Chahat+Jewellers+Elegance') center/cover no-repeat;
+            background-size: cover;
+            background-blend-mode: overlay;
+            background-color: #2c1a0e;
+            text-align: center;
+            color: white;
+            padding: 5rem 1rem;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.55);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+        .hero-sub {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn {
+            display: inline-block;
+            background: #d4af37;
+            color: #2c1810;
+            padding: 0.8rem 2rem;
+            margin-top: 1.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #b58d2c;
+            color: white;
+            transform: scale(1.02);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            color: #3a2318;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #d4af37;
+            margin: 0.5rem auto 0;
+        }
+        .about-text {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            background: #fff6ea;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+        .info-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .info-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.8rem;
+            flex: 1 1 250px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border: 1px solid #f7e5cf;
+        }
+        .info-card i {
+            font-size: 2.5rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+        }
+        .info-card h3 {
+            margin-bottom: 0.8rem;
+        }
+
+        /* Contact Page specific */
+        .contact-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            background: white;
+            border-radius: 30px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .contact-details, .contact-form {
+            flex: 1;
+            min-width: 250px;
+        }
+        .contact-details p {
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+        }
+        .contact-details i {
+            width: 35px;
+            font-size: 1.3rem;
+            color: #d4af37;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid #e2cfb0;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .contact-form button {
+            background: #3a2318;
+            color: #ffefcf;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        /* Policy Pages styling (simple) */
+        .legal-content {
+            background: #fffaf3;
+            padding: 2rem;
+            border-radius: 28px;
+            line-height: 1.7;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .legal-content h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.7rem;
+            color: #5e3924;
+        }
+        .legal-content p, .legal-content ul {
+            margin-bottom: 1rem;
+        }
+        .legal-content ul {
+            padding-left: 2rem;
+        }
+
+        footer {
+            background: #1f130b;
+            color: #c2aa83;
+            text-align: center;
+            padding: 1.8rem;
+            font-size: 0.9rem;
+        }
+        .copyright {
+            border-top: 1px solid #4a3222;
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 800px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                gap: 1rem;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .navbar {
+                flex-direction: row;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+        .highlight {
+            font-weight: 600;
+            color: #9b6a3c;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container navbar">
+        <div class="logo">
+            <h1>CHAHAT JEWELLERS</h1>
+            <p>✨ Timeless Elegance ✨</p>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+            <li><a href="#" class="nav-link" data-page="about">About</a></li>
+            <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+            <li><a href="#" class="nav-link" data-page="privacy">Privacy Policy</a></li>
+            <li><a href="#" class="nav-link" data-page="terms">Terms & Conditions</a></li>
+        </ul>
+    </div>
+</header>
+
+<main id="main-content">
+    <!-- HOME SECTION (default visible) -->
+    <section id="home-section">
+        <div class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Chahat Jewellers</h1>
+                <p class="hero-sub">Exquisite craftsmanship in 22ct, 18ct, 14ct Gold | Diamond | Silver Jewellery</p>
+                <a href="#" class="btn" id="explore-btn">Discover Collection</a>
+            </div>
+        </div>
+        <div class="container">
+            <div style="text-align:center; margin: 2rem 0 1rem;">
+                <h2 class="section-title">Crafted to Perfection</h2>
+                <p style="max-width:800px; margin:0 auto; text-align:center;">Since inception, Chahat Jewellers delivers unmatched purity and design. Explore our range of certified jewellery for every occasion.</p>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-gem"></i>
+                    <h3>22ct / 18ct / 14ct Gold</h3>
+                    <p>Hallmarked gold jewellery with brilliant traditional & modern designs.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-diamond"></i>
+                    <h3>Diamond Jewellery</h3>
+                    <p>Breathtaking diamonds set in elegant patterns for everlasting shine.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-ring"></i>
+                    <h3>Silver Elegance</h3>
+                    <p>Exclusive silver collection, from daily wear to festive ornaments.</p>
+                </div>
+            </div>
+            <!-- quick contact preview -->
+            <div style="background:#f5ede1; border-radius: 30px; padding:1.5rem; margin:2rem 0 0; text-align:center;">
+                <i class="fas fa-phone-alt" style="color:#b8860b;"></i> <strong>Call / WhatsApp:</strong> 9811414942 &nbsp;&nbsp;|&nbsp;
+                <i class="fas fa-envelope"></i> officialchahatjewellers@gmail.com
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION (hidden initially) -->
+    <section id="about-section" style="display:none;">
+        <div class="container">
+            <h2 class="section-title">About Chahat Jewellers</h2>
+            <div class="about-text">
+                <p>Chahat Jewellers is a symbol of trust and artistry, specializing in <strong class="highlight">22ct, 18ct, and 14ct gold</strong>, meticulously crafted diamond jewellery, and exquisite silver pieces. Based in the heart of Delhi, we bring you designs that celebrate your cherished moments.</p>
+                <p style="margin-top:1rem;">Our showroom offers a curated collection blending tradition with contemporary elegance. We believe every piece tells a story, and our artisans ensure that each ornament meets the highest standards of purity and finesse. Visit us to experience the brilliance of ethically sourced gems and gold.</p>
+                <p style="margin-top:1rem;"><i class="fas fa-map-marker-alt" style="color:#b8860b;"></i> <strong>Address:</strong> B 690-691, Sector 1, Avantika, Rohini, Delhi - 110085</p>
+                <p><i class="fas fa-clock"></i> <strong>Business Hours:</strong> Mon-Sat: 10:30 AM – 8:00 PM | Sunday: 11:00 AM – 6:00 PM</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact-section" style="display:none;">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-wrapper">
+                <div class="contact-details">
+                    <h3>📍 Visit Our Studio</h3>
+                    <p><i class="fas fa-location-dot"></i> B 690-691, Sector 1, Avantika, Rohini, Delhi - 110085</p>
+                    <p><i class="fas fa-phone-alt"></i> +91 9811414942</p>
+                    <p><i class="fas fa-envelope"></i> officialchahatjewellers@gmail.com</p>
+                    <p><i class="fab fa-whatsapp"></i> WhatsApp: 9811414942</p>
+                    <hr style="margin:1rem 0; background:#e2cfb0;">
+                    <p><i class="fas fa-gem"></i> For custom design inquiries, bulk orders or product queries, feel free to reach out. We’d love to assist you!</p>
+                </div>
+                <div class="contact-form">
+                    <h3>Send us a message</h3>
+                    <form id="inquiry-form">
+                        <input type="text" placeholder="Your Name" required id="form-name">
+                        <input type="email" placeholder="Email Address" required id="form-email">
+                        <input type="tel" placeholder="Phone Number" id="form-phone">
+                        <textarea rows="4" placeholder="Tell us about your jewellery requirement..." required id="form-msg"></textarea>
+                        <button type="submit" class="btn">Send Inquiry <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                    <p style="font-size:0.8rem; margin-top: 1rem;">We’ll get back to you within 24 hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRIVACY POLICY SECTION -->
+    <section id="privacy-section" style="display:none;">
+        <div class="container">
+            <h2 class="section-title">Privacy Policy</h2>
+            <div class="legal-content">
+                <p><strong>Effective Date:</strong> 1st January 2025</p>
+                <p>Chahat Jewellers ("we", "our", "us") respects your privacy. This Privacy Policy explains how we collect, use, and protect your personal information when you interact with our website or visit our physical store.</p>
+                <h3>Information We Collect</h3>
+                <p>We may collect personal details such as your name, email address, phone number, and address when you contact us, make an inquiry, or purchase products. We also collect non-personal data such as browser type and IP addresses for analytical purposes.</p>
+                <h3>How We Use Your Information</h3>
+                <ul>
+                    <li>To respond to your inquiries and provide customer support.</li>
+                    <li>To process orders and deliver jewellery purchases.</li>
+                    <li>To improve our services, website experience, and product offerings.</li>
+                    <li>To send occasional promotional offers or updates (you may opt-out).</li>
+                </ul>
+                <h3>Data Security</h3>
+                <p>We implement appropriate security measures to safeguard your data. However, no internet transmission is 100% secure. We do not sell or rent your personal data to third parties.</p>
+                <h3>Cookies</h3>
+                <p>Our website may use cookies to enhance browsing. You may disable cookies in browser settings.</p>
+                <h3>Contact Us</h3>
+                <p>If you have any questions about this Privacy Policy, please contact us at <strong>officialchahatjewellers@gmail.com</strong> or call <strong>9811414942</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TERMS & CONDITIONS SECTION -->
+    <section id="terms-section" style="display:none;">
+        <div class="container">
+            <h2 class="section-title">Terms & Conditions</h2>
+            <div class="legal-content">
+                <p>Welcome to Chahat Jewellers. By accessing our website or making a purchase, you agree to be bound by these Terms & Conditions.</p>
+                <h3>Product Information</h3>
+                <p>We deal in 22ct, 18ct, 14ct gold jewellery, diamond jewellery, and silver ornaments. All gold items are hallmarked as per BIS standards (where applicable). Product images are for illustrative purposes; minor variations may exist.</p>
+                <h3>Pricing & Payments</h3>
+                <p>Prices are subject to change without notice due to metal market fluctuations. Final billing will include applicable taxes (GST). Payment can be made via cash, UPI, credit/debit cards, or bank transfers at our store.</p>
+                <h3>Shipping & Returns</h3>
+                <p>For in-store purchases, all sales are final after quality check. For special online orders (if applicable) return policy will be discussed case by case. Damaged items must be reported within 48 hours. Customised jewellery is non-refundable.</p>
+                <h3>Intellectual Property</h3>
+                <p>All content, logos, designs on this website are owned by Chahat Jewellers and may not be reproduced without permission.</p>
+                <h3>Limitation of Liability</h3>
+                <p>Chahat Jewellers shall not be liable for any indirect or consequential losses arising from use of our products or website.</p>
+                <h3>Governing Law</h3>
+                <p>These terms are governed by the laws of India, and any disputes shall be subject to the jurisdiction of Delhi courts.</p>
+                <p>For any clarifications, contact us at B 690-691 Sector 1 Rohini, Delhi 110085.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
+            <span><i class="fas fa-map-marker-alt"></i> B 690-691, Sec 1, Avantika, Rohini, Delhi</span>
+            <span><i class="fas fa-phone"></i> 9811414942</span>
+            <span><i class="fas fa-envelope"></i> officialchahatjewellers@gmail.com</span>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Chahat Jewellers. All Rights Reserved. | Crafted with care in Delhi</p>
+            <p><strong>Copyright © Chahat Jewellers</strong> — 22ct | 18ct | 14ct Gold, Diamond & Silver Jewellery</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Page switching logic
+    const sections = {
+        home: document.getElementById('home-section'),
+        about: document.getElementById('about-section'),
+        contact: document.getElementById('contact-section'),
+        privacy: document.getElementById('privacy-section'),
+        terms: document.getElementById('terms-section')
+    };
+
+    const navLinks = document.querySelectorAll('.nav-link');
+    const exploreBtn = document.getElementById('explore-btn');
+
+    function showPage(pageId) {
+        // Hide all sections
+        Object.values(sections).forEach(section => {
+            if(section) section.style.display = 'none';
+        });
+        // Show selected section
+        if(sections[pageId]) {
+            sections[pageId].style.display = 'block';
+            // Scroll to top gently
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        // update active class on nav
+        navLinks.forEach(link => {
+            const linkPage = link.getAttribute('data-page');
+            if(linkPage === pageId) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
+
+    // add click event to nav
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const page = link.getAttribute('data-page');
+            if(page === 'home') showPage('home');
+            else if(page === 'about') showPage('about');
+            else if(page === 'contact') showPage('contact');
+            else if(page === 'privacy') showPage('privacy');
+            else if(page === 'terms') showPage('terms');
+            // close mobile menu if open
+            const mobileNav = document.getElementById('nav-links');
+            if(mobileNav.classList.contains('show')) {
+                mobileNav.classList.remove('show');
+            }
+        });
+    });
+
+    // Explore button -> show contact / about? For better UX, show contact page or about? Let's make it go to contact.
+    if(exploreBtn) {
+        exploreBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPage('contact');
+        });
+    }
+
+    // Set default home visible, others hidden already in HTML? but ensure about-section etc hidden by default
+    // already set style display:none in each respective section except home-section is visible.
+    // To be safe, ensure home-section visible at start, others hidden.
+    // Also, initial active class
+    function setInitial() {
+        showPage('home');
+        // additional: set active home link
+        document.querySelector('.nav-link[data-page="home"]').classList.add('active');
+    }
+    setInitial();
+
+    // Mobile toggle
+    const toggleBtn = document.getElementById('mobile-menu');
+    const navMenu = document.getElementById('nav-links');
+    if(toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+    }
+
+    // Simple contact form handling (demo)
+    const contactForm = document.getElementById('inquiry-form');
+    if(contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('form-name').value.trim();
+            const email = document.getElementById('form-email').value.trim();
+            const msg = document.getElementById('form-msg').value.trim();
+            if(name && email && msg) {
+                alert(`✨ Thank you ${name}! We have received your inquiry. Our team will contact you shortly at ${email} or via phone.\n\n- Chahat Jewellers`);
+                contactForm.reset();
+            } else {
+                alert('Please fill in all required fields (Name, Email, Message).');
+            }
+        });
+    }
+
+    // also for any other dynamic needs, ensure copyright and contact details are visible
+    console.log("Chahat Jewellers Website Loaded - Gold, Diamond, Silver Experts");
+</script>
+</body>
+</html>
